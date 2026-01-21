@@ -8,10 +8,10 @@
 </head>
 <header>
     <menu>
-        <a href="index.html">Home</a>
-        <a href="chisiamo.html">Chi siamo</a>
-        <a href="ristorante.html">Ristorante</a>
-        <a href="pizzeria.html">Pizzeria</a>
+        <a href="index.html">HOME</a>
+        <a href="chisiamo.html">CHI SIAMO</a>
+        <a href="ristorante.html">RISTORANTE</a>
+        <a href="pizzeria.html">PIZZERIA</a>
 </header>
 
 <body>
@@ -33,53 +33,97 @@
     <span class="dot" onclick="currentSlide = 3; showSlide(3);"></span>
 </div>
 
-<div>
-
-    <p>storia della pizzeria</p>
-    <button>Leggi la nostra storia</button>
+<div class="featured-section">
+    <div class="featured-left">
+        <img src="immagini/famiglia meda.jpg" alt="Featured Image" class="featured-image">
+    </div>
+    <div class="featured-right">
+        <p>Dal 1980, ci dedichiamo con passione alla ristorazione per offrire ai nostri clienti piatti genuini e un servizio accogliente, per farli sentire come a casa. </p>
+        <button class="featured-button" onclick="scrollToGallery()">LEGGI LA NOSTRA STORIA</button>
+    </div>
 </div>
 
-<div>
-Vuoi organizzare un pranzo o una cena da noi? 
-Contattaci!
-
-<form>
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required><br><br>
+<div class="contact-section">
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <p>Grazie!</p>
+        </div>
+    </div>
+    <h2>Vuoi organizzare un pranzo o una cena da noi?</h2>
+    <p>Contattaci!</p>
     
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
-    
-    <label for="message">Messaggio:</label><br>
-    <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
-    
-    <input type="submit" value="Invia">
-</form>
+    <form id="contactForm" method="POST" action="https://formsubmit.co/giorgiamaroso02@gmail.com">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Messaggio:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        
+        <input type="hidden" name="_subject" value="Nuovo messaggio dal sito!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="submit" value="Invia">
+    </form>
 </div>
+
+<div class="gallery-section" id="gallery">
+    <div class="gallery-item gallery-item-left">
+        <img src="immagini/alponte_2812-62.jpg" alt="Gallery Image 1" class="gallery-image">
+        <div class="gallery-text-left">
+            <h3>Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        </div>
+    </div>
+
+    <div class="gallery-item gallery-item-right">
+        <div class="gallery-text-right">
+            <h3>Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        </div>
+        <img src="immagini/alponte_2812-36.jpg" alt="Gallery Image 2" class="gallery-image">
+    </div>
+
+    <div class="gallery-item gallery-item-left">
+        <img src="immagini/alponte_2812-46.jpg" alt="Gallery Image 3" class="gallery-image">
+        <div class="gallery-text-left">
+            <h3>Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        </div>
+    </div>
+
+    <div class="gallery-item gallery-item-right">
+        <div class="gallery-text-right">
+            <h3>Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        </div>
+        <img src="immagini/alponte_2812-09.jpg" alt="Gallery Image 4" class="gallery-image">
+    </div>
 </body>
 
 <footer>
-    <p>Contatti:
-        <br>Telefono: 123-456-7890
+    <p>CONTATTACI!
+        <br>Telefono: 0424 411535
         <br>Email: pizzeriaalponte@gmail.com 
     </p>
 
-    <p>Dove siamo::
-        <br>Via Roma 123, Città, Italia
+    <p>DOVE CI TROVI?
+        <br>Via Braglio, 83, 36064 Colceresa VI
     </p>
 
-    <p>Orari di apertura:
+    <p>QUANDO SIAMO APERTI?
         <br>Lunedì: Chiuso
         <br>Martedì: 9:30 - 14:30
         <br>Mercoledì - Domenica: 
         <br>9:30 -  14:30 / 17:30 - 23:00
       
 
-    <p>Seguici sui social media:
-        <br><a href="https://www.facebook.com/pizzeriaalponte">Facebook</a>
-        <br><a href="https://www.instagram.com/pizzeriaalponte">Instagram</a>
+    <p>Seguici sui nostri profili social!
+        <br><a href="https://www.facebook.com/profile.php?id=100063767674334"><img src="immagini/logo facebook .png" alt="Facebook" style="height: 50px;"></a>
+        <a href="https://www.instagram.com/pizzeria_al.ponte/"><img src="immagini/logo instagram.png" alt="Instagram" style="height: 50px;"></a>
     </p>
-
 </footer>
+
 <script src="config.js"></script>
 </html>
