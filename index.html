@@ -10,7 +10,7 @@
     
     <!-- Leaflet CSS per la mappa interattiva -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
@@ -61,21 +61,69 @@
     </header>
 
     <!-- ═══════════════════════════════════════════════════════════════════ -->
-    <!-- SLIDER - Carousel di immagini hero full-screen -->
+    <!-- MARQUEE GALLERY - Due righe di foto in scorrimento automatico -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
-    <div id="slider" class="slider-container">
-        <button class="slider-btn prev-btn" onclick="changeSlide(-1)" aria-label="Immagine precedente">&#10094;</button>
-        
-        <div class="slider-wrapper">
-            <img src="immagini/alponte_2812-62.jpg" alt="Interno ristorante 1" class="slider-image">
-            <img src="immagini/alponte_2812-09.jpg" alt="Interno ristorante 1" class="slider-image">
-            <img src="immagini/alponte_2812-34.jpg" alt="Interno ristorante 2" class="slider-image">
-            <img src="immagini/alponte_2812-37.jpg" alt="Interno ristorante 3" class="slider-image">
-            <img src="immagini/alponte_2812-42.jpg" alt="Interno ristorante 4" class="slider-image">
-            <img src="immagini/alponte_2812-46.jpg" alt="Interno ristorante 5" class="slider-image">
+    <div class="marquee-section">
+        <!-- Riga 1: da sinistra a destra -->
+        <div class="marquee-row">
+            <div class="marquee-track marquee-left">
+                <img src="immagini/alponte_2812-62.jpg" alt="Foto 1" class="marquee-img">
+                <img src="immagini/alponte_2812-09.jpg" alt="Foto 2" class="marquee-img">
+                <img src="immagini/alponte_2812-34.jpg" alt="Foto 3" class="marquee-img">
+                <img src="immagini/alponte_2812-37.jpg" alt="Foto 4" class="marquee-img">
+                <img src="immagini/alponte_2812-42.jpg" alt="Foto 5" class="marquee-img">
+                <img src="immagini/alponte_2812-46.jpg" alt="Foto 6" class="marquee-img">
+                <img src="immagini/alponte_2812-22.jpg" alt="Foto 7" class="marquee-img">
+                <img src="immagini/alponte_2812-13.jpg" alt="Foto 8" class="marquee-img">
+                <img src="immagini/alponte_2812-32.jpg" alt="Foto 9" class="marquee-img">
+                <img src="immagini/alponte_2812-11.jpg" alt="Foto 10" class="marquee-img">
+                <img src="immagini/alponte_2812-40.jpg" alt="Foto 11" class="marquee-img">
+                <img src="immagini/alponte_2812-44.jpg" alt="Foto 12" class="marquee-img">
+                <!-- Duplicati per loop infinito -->
+                <img src="immagini/alponte_2812-62.jpg" alt="Foto 1" class="marquee-img">
+                <img src="immagini/alponte_2812-09.jpg" alt="Foto 2" class="marquee-img">
+                <img src="immagini/alponte_2812-34.jpg" alt="Foto 3" class="marquee-img">
+                <img src="immagini/alponte_2812-37.jpg" alt="Foto 4" class="marquee-img">
+                <img src="immagini/alponte_2812-42.jpg" alt="Foto 5" class="marquee-img">
+                <img src="immagini/alponte_2812-46.jpg" alt="Foto 6" class="marquee-img">
+                <img src="immagini/alponte_2812-22.jpg" alt="Foto 7" class="marquee-img">
+                <img src="immagini/alponte_2812-13.jpg" alt="Foto 8" class="marquee-img">
+                <img src="immagini/alponte_2812-32.jpg" alt="Foto 9" class="marquee-img">
+                <img src="immagini/alponte_2812-11.jpg" alt="Foto 10" class="marquee-img">
+                <img src="immagini/alponte_2812-40.jpg" alt="Foto 11" class="marquee-img">
+                <img src="immagini/alponte_2812-44.jpg" alt="Foto 12" class="marquee-img">
+            </div>
         </div>
-        
-        <button class="slider-btn next-btn" onclick="changeSlide(1)" aria-label="Immagine successiva">&#10095;</button>
+        <!-- Riga 2: da destra a sinistra -->
+        <div class="marquee-row">
+            <div class="marquee-track marquee-right">
+                <img src="immagini/alponte_2502-019.png" alt="Foto 12" class="marquee-img">
+                <img src="immagini/alponte_2502-034.png" alt="Foto 11" class="marquee-img">
+                <img src="immagini/alponte_2502-078.png" alt="Foto 10" class="marquee-img">
+                <img src="immagini/alponte_2502-127.png" alt="Foto 9" class="marquee-img">
+                <img src="immagini/alponte_2502-174.png" alt="Foto 8" class="marquee-img">
+                <img src="immagini/alponte_2502-120.png" alt="Foto 7" class="marquee-img">
+                <img src="immagini/alponte_2502-082.png" alt="Foto 6" class="marquee-img">
+                <img src="immagini/alponte_2502-008.png" alt="Foto 5" class="marquee-img">
+                <img src="immagini/alponte_2502-007.png" alt="Foto 4" class="marquee-img">
+                <img src="immagini/alponte_2502-099.png" alt="Foto 3" class="marquee-img">
+                <img src="immagini/alponte_2502-078.png" alt="Foto 2" class="marquee-img">
+                <img src="immagini/alponte_2502-054.png" alt="Foto 1" class="marquee-img">
+                <!-- Duplicati per loop infinito -->
+                <img src="immagini/alponte_2502-019.png" alt="Foto 12" class="marquee-img">
+                <img src="immagini/alponte_2502-034.png" alt="Foto 11" class="marquee-img">
+                <img src="immagini/alponte_2502-078.png" alt="Foto 10" class="marquee-img">
+                <img src="immagini/alponte_2502-127.png" alt="Foto 9" class="marquee-img">
+                <img src="immagini/alponte_2502-174.png" alt="Foto 8" class="marquee-img">
+                <img src="immagini/alponte_2502-120.png" alt="Foto 7" class="marquee-img">
+                <img src="immagini/alponte_2502-082.png" alt="Foto 6" class="marquee-img">
+                <img src="immagini/alponte_2502-008.png" alt="Foto 5" class="marquee-img">
+                <img src="immagini/alponte_2502-007.png" alt="Foto 4" class="marquee-img">
+                <img src="immagini/alponte_2502-099.png" alt="Foto 3" class="marquee-img">
+                <img src="immagini/alponte_2502-078.png" alt="Foto 2" class="marquee-img">
+                <img src="immagini/alponte_2502-054.png" alt="Foto 1" class="marquee-img">
+            </div>
+        </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════ -->

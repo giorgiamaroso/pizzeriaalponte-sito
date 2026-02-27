@@ -34,6 +34,9 @@ body {
     margin: 0;
     padding: 0;
     scroll-snap-align: start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10; 
 }
 
 .nav {
@@ -135,58 +138,66 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   SLIDER - Carousel immagini hero full-screen
+   MARQUEE GALLERY - Due righe di foto in scorrimento automatico
    ═══════════════════════════════════════════════════════════════════════ */
 
-.slider-container {
-    position: relative;
+.marquee-section {
     width: 100%;
-    overflow: hidden;
-    background-color: #ffffff;
-    height: 100vh;
-    margin: 0;
-    scroll-snap-align: start;
-}
-
-.slider-wrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slider-image {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: #f4f1de;
-    color: #212121;
-    border: none;
-    font-size: 24px;
-    padding: 12px 18px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: all 0.3s;
-    z-index: 10;
-    width: 50px;
-    height: 50px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px 0;
+    overflow: hidden;
+    scroll-snap-align: start;
+    height: calc(100vh - 65px); /* 100vh meno l'altezza dell'header */
     justify-content: center;
 }
 
-.slider-btn:hover {
-    background-color: #ffffff;
-    transform: translateY(-50%) scale(1.1);
+.marquee-row {
+    width: 100%;
+    overflow: hidden;
 }
 
-.prev-btn { left: 15px; }
-.next-btn { right: 15px; }
+.marquee-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+}
+
+/* Riga 1: scorre da sinistra a destra */
+.marquee-left {
+    animation: scrollLeft 60s linear infinite;
+}
+
+/* Riga 2: scorre da destra a sinistra */
+.marquee-right {
+    animation: scrollRight 40s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.marquee-img {
+    height: 260px;
+    width: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* Pausa on hover */
+.marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+}
 
 /* ═══════════════════════════════════════════════════════════════════════
    FEATURED SECTION
@@ -299,7 +310,7 @@ header a:hover {
 }
 
 .restaurant-menu-section .menu-restaurant-button:hover {
-    background-color: #da2c2d;
+    background-color: #d47305;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -335,7 +346,7 @@ header a:hover {
 }
 
 .pizza-menu-section .menu-pizza-button:hover {
-    background-color: #f1880d;
+    background-color: #ebb849;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
