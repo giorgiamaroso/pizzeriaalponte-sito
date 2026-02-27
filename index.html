@@ -1,129 +1,318 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pizzeriaalponte</title>
-<link rel = "stylesheet" href="style.css"> 
+    <title>Pizzeria Trattoria al Ponte</title>
     
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Leaflet CSS per la mappa interattiva -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 </head>
-<header>
-    <menu>
-        <a href="index.html">HOME</a>
-        <a href="chisiamo.html">CHI SIAMO</a>
-        <a href="ristorante.html">RISTORANTE</a>
-        <a href="pizzeria.html">PIZZERIA</a>
-</header>
 
 <body>
-<div id="slider" class="slider-container">
-    <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-    <div class="slider-wrapper">
-        <img src="immagini/alponte_2812-62.jpg" alt="Photo 1" class="slider-image">
-        <img src="immagini/alponte_2812-36.jpg" alt="Photo 2" class="slider-image">
-        <img src="immagini/alponte_2812-46.jpg" alt="Photo 3" class="slider-image">
-        <img src="immagini/alponte_2812-09.jpg" alt="Photo 4" class="slider-image">
-    </div>
-    <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
-</div>
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- HEADER - Navigazione principale con menu dropdown -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <header class="site-header">
+        <nav class="nav">
+            <!-- Menu Home -->
+            <div class="menu-item">
+                <a href="#">HOME</a>
+                <div class="dropdown">
+                    <a href="#intro">Introduzione</a>
+                    <a href="#news">Novità</a>
+                </div>
+            </div>
 
-<div class="slider-dots">
-    <span class="dot" onclick="currentSlide = 0; showSlide(0);"></span>
-    <span class="dot" onclick="currentSlide = 1; showSlide(1);"></span>
-    <span class="dot" onclick="currentSlide = 2; showSlide(2);"></span>
-    <span class="dot" onclick="currentSlide = 3; showSlide(3);"></span>
-</div>
+            <!-- Menu Chi Siamo -->
+            <div class="menu-item">
+                <a href="#">CHI SIAMO</a>
+                <div class="dropdown">
+                    <a href="#gallery">La nostra storia</a>
+                    <a href="#staff">Lo staff</a>
+                </div>
+            </div>
 
-<div class="featured-section">
-    <div class="featured-left">
-        <img src="immagini/famiglia meda.jpg" alt="Featured Image" class="featured-image">
-    </div>
-    <div class="featured-right">
-        <p>Dal 1980, ci dedichiamo con passione alla ristorazione per offrire ai nostri clienti piatti genuini e un servizio accogliente, per farli sentire come a casa. </p>
-        <button class="featured-button" onclick="scrollToGallery()">LEGGI LA NOSTRA STORIA</button>
-    </div>
-</div>
+            <!-- Menu Cucina -->
+            <div class="menu-item">
+                <a href="#">CUCINA</a>
+                <div class="dropdown">
+                    <a href="#menu-ristorante">Menu</a>
+                    <a href="#menu-vini">Vini</a>
+                </div>
+            </div>
 
-<div class="contact-section">
+            <!-- Menu Pizze -->
+            <div class="menu-item">
+                <a href="#">PIZZE</a>
+                <div class="dropdown">
+                    <a href="#menu-pizzeria">Classiche</a>
+                    <a href="#stagionali">Stagionali</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDER - Carousel di immagini hero full-screen -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="slider" class="slider-container">
+        <button class="slider-btn prev-btn" onclick="changeSlide(-1)" aria-label="Immagine precedente">&#10094;</button>
+        
+        <div class="slider-wrapper">
+            <img src="immagini/alponte_2812-09.jpg" alt="Interno ristorante 1" class="slider-image">
+            <img src="immagini/alponte_2812-34.jpg" alt="Interno ristorante 2" class="slider-image">
+            <img src="immagini/alponte_2812-37.jpg" alt="Interno ristorante 3" class="slider-image">
+            <img src="immagini/alponte_2812-42.jpg" alt="Interno ristorante 4" class="slider-image">
+            <img src="immagini/alponte_2812-46.jpg" alt="Interno ristorante 5" class="slider-image">
+        </div>
+        
+        <button class="slider-btn next-btn" onclick="changeSlide(1)" aria-label="Immagine successiva">&#10095;</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- FEATURED SECTION - Sezione in evidenza con immagine e call-to-action -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div class="featured-section">
+        <div class="featured-left">
+            <img src="immagini/famiglia meda.jpg" alt="La famiglia Meda" class="featured-image">
+        </div>
+        
+        <div class="featured-right">
+            <p>Dal 1996, ci dedichiamo con passione alla ristorazione per offrire ai nostri clienti piatti genuini e un servizio accogliente, per farli sentire come a casa.</p>
+            <a href="#gallery" class="featured-button">LEGGI LA NOSTRA STORIA</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- MENU RISTORANTE - Sezione menu cucina italiana con griglia mosaico -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="menu-ristorante" class="restaurant-menu-section">
+        <!-- Pulsanti selezione lingua menu -->
+        <div class="menu-buttons-row">
+            <button id="menu-restaurant-button" class="menu-restaurant-button">MENÙ ITALIANO</button>
+            <button class="menu-restaurant-button">ENGLISH MENU</button>
+        </div>
+        
+        <!-- Griglia immagini mosaico -->
+        <div class="menu-mosaic-grid">
+            <img src="immagini/alponte_2812-09.jpg" alt="Piatto 1" class="mosaic-image mosaic-large">
+            <img src="immagini/alponte_2812-37.jpg" alt="Piatto 2" class="mosaic-image mosaic-tall">
+            <img src="immagini/alponte_2812-34.jpg" alt="Piatto 3" class="mosaic-image mosaic-small">
+            <img src="immagini/alponte_2812-46.jpg" alt="Piatto 4" class="mosaic-image mosaic-small">
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- MENU PIZZERIA - Sezione menu pizze con griglia mosaico -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="menu-pizzeria" class="pizza-menu-section">
+        <!-- Pulsanti selezione lingua menu -->
+        <div class="menu-buttons-row">
+            <button id="menu-pizza-button" class="menu-pizza-button">MENÙ ITALIANO</button>
+            <button class="menu-pizza-button">ENGLISH MENU</button>
+        </div>
+        
+        <!-- Griglia immagini mosaico -->
+        <div class="menu-mosaic-grid">
+            <img src="immagini/" alt="Pizza 1" class="mosaic-image mosaic-tall">
+            <img src="immagini/" alt="Pizza 2" class="mosaic-image mosaic-large">
+            <img src="immagini/" alt="Pizza 3" class="mosaic-image mosaic-small">
+            <img src="immagini/" alt="Pizza 4" class="mosaic-image mosaic-small">
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SEZIONE VINI - Carta dei vini e bevande -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="menu-vini" class="wines-section">
+        <h2>Vini e drinks</h2>
+        <p class="wines-description">Scopri la nostra selezione di vini, curata con attenzione per accompagnare ogni piatto della nostra cucina.</p>
+        
+        <!-- Pulsanti carta vini -->
+        <div class="menu-buttons-row">
+            <button class="wines-button">CARTA DEI VINI</button>
+            <button class="wines-button">WINE LIST</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- GALLERY - Storia della pizzeria con timeline e immagini -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div class="gallery-section" id="gallery">
+        <div class="gallery-item gallery-item-left">
+            <img src="immagini/franca carlo giovani.tif" alt="Pizzeria anni '90" class="gallery-image">
+            <div class="gallery-text-left">
+                <h3>20 dicembre 1996</h3>
+                <p>Carlo e Franca fanno una scelta coraggiosa: cambiare vita e prendere in mano la pizzeria del paese, che da tempo aveva perso un po' della sua luce.<br>Lui lascia il lavoro da autista, lei quello in una ditta di confezioni. Si rimboccano le maniche e, forti dell'esperienza maturata alle sagre e nel piccolo forno di casa, iniziano questa nuova avventura insieme ai figli Mirco, Christian e Roberta.<br>La risposta del paese è immediata: la pizzeria torna a riempirsi e, tra pizze e cene, il lavoro cresce giorno dopo giorno, con grande soddisfazione di tutta la famiglia.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item gallery-item-right">
+            <div class="gallery-text-right">
+                <h3>Anni 2000</h3>
+                <p>Carlo si dedica alla cucina con il supporto di Franca, mentre Mirco prende in mano la pizzeria. Christian, finita la scuola, affianca il fratello e Roberta, giovanissima, si muove con naturalezza tra i tavoli.<br>Sono anni intensi e pieni di vita, fatti di lavoro, risate e serate che finiscono a notte fonda. In quel periodo "il Ponte" diventa un vero punto di riferimento per tanti giovani e per le squadre di calcio del paese, tra convivialità e momenti da ricordare.</p>
+            </div>
+            <img src="immagini/tutti al bar vecchio.tif" alt="Staff anni 2000" class="gallery-image">
+        </div>
+
+        <div class="gallery-item gallery-item-left">
+            <img src="immagini/lavori pizzeria.jpg" alt="Nuova sala 2013" class="gallery-image">
+            <div class="gallery-text-left">
+                <h3>2013 - 2019</h3>
+                <p>Con il passare del tempo arrivano i primi cambiamenti importanti. Il locale si rinnova: bar e cucina vengono ristrutturati e nel 2013 nasce una nuova sala, che rende la pizzeria più grande e accogliente.<br>La squadra si allarga, entrano nuove persone e nuove energie. Cambiano molte cose, ma resta fermo il cuore del progetto: una pizzeria di famiglia, attenta alla qualità e alle persone.<br>Nel 2019 anche la nuova generazione entra a pieno titolo nel lavoro quotidiano, portando entusiasmo e continuità.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item gallery-item-right">
+            <div class="gallery-text-right">
+                <h3>2020 - 2026</h3>
+                <p>Poi arriva il momento più difficile: il Covid. Per la prima volta tutto si ferma, con forni e fuochi spenti per mesi. Una pausa forzata che diventa però occasione per ripartire con nuove idee ed energia rinnovata. Nel 2024 si realizza un sogno atteso da tempo: l'apertura della nuova sala al piano terra, pensata e costruita con sacrificio, passione e attenzione per rendere l'esperienza ancora più accogliente.<br>Oggi festeggiamo 30 anni di attività, grazie anche ai nostri clienti, che ci hanno accompagnato in questo percorso. A loro va la nostra gratitudine e il nostro impegno quotidiano: continuare a fare bene, con la stessa passione del primo giorno.</p>
+            </div>
+            <img src="immagini/mirco e cristian al lavoro.jpg" alt="Pizzeria oggi" class="gallery-image">
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SEZIONE CONTATTI - Form prenotazione -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div class="contact-section">
+        <h2>Prenota il tuo tavolo</h2>
+        <p>Compila il form per richiedere una prenotazione</p>
+        
+        <form id="contactForm" method="POST" action="https://formsubmit.co/pizzeriatrattoria.alponte@gmail.com">
+            <label for="name">Nome e Cognome *</label>
+            <input type="text" id="name" name="name" required placeholder="es. Mario Rossi">
+            
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="es. mariorossi@gmail.com">
+            
+            <label for="phone">Telefono *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="es. 333 123 4567">
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="date">Data *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-col">
+                    <label for="time">Ora *</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+            </div>
+            
+            <label for="guests">Numero di persone *</label>
+            <input type="number" id="guests" name="guests" min="1" max="20" required placeholder="es. 4">
+            
+            <label for="message">Note aggiuntive (facoltativo)</label>
+            <textarea id="message" name="message" rows="3" placeholder="Allergie, intolleranze, occasioni speciali..."></textarea>
+            
+            <input type="hidden" name="_subject" value="Nuova richiesta di prenotazione!">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <input type="submit" value="RICHIEDI PRENOTAZIONE">
+        </form>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SEZIONE MAPPA E PARCHEGGI -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div class="parking-section">
+        <div class="parking-container">
+            <div class="parking-map">
+                <div id="map" style="width: 100%; height: 100%; border-radius: 15px;"></div>
+            </div>
+            
+            <div class="parking-info">
+                <h2>Come raggiungerci</h2>
+                <p>Siamo facilmente raggiungibili e disponiamo di diversi parcheggi nelle vicinanze per i nostri ospiti.</p>
+                
+                <h3 style="color: #ffffff; font-size: 20px; margin-top: 30px; margin-bottom: 15px;">Parcheggi disponibili:</h3>
+                <ul class="parking-list">
+                    <li>Parcheggio principale - Via Braglio (di fronte al ristorante)</li>
+                    <li>Parcheggio Magazzini Da Leone - Via Braglio (di fronte al ristorante)</li>
+                    <li>Parcheggio comunale - Piazza della Chiesa, 50m dal locale</li>
+                    <li>Area parcheggio libero - Via Roma, 100m dal locale</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- MODALE CONFERMA - Popup di conferma invio messaggio -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
     <div id="thankYouModal" class="modal">
         <div class="modal-content">
-            <p>Grazie!</p>
+            <!-- Icona checkmark animata -->
+            <div class="modal-icon">
+                <svg viewBox="0 0 52 52" class="checkmark">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h3>Richiesta inviata!</h3>
+            <p>La tua richiesta di prenotazione è stata inviata con successo.<br>Ti ricontatteremo al più presto per confermare!</p>
         </div>
     </div>
-    <h2>Vuoi organizzare un pranzo o una cena da noi?</h2>
-    <p>Contattaci!</p>
-    
-    <form id="contactForm" method="POST" action="https://formsubmit.co/giorgiamaroso02@gmail.com">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required><br><br>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- FOOTER - Informazioni di contatto, orari e social media -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <footer>
+        <!-- Contatti -->
+        <div class="footer-section">
+            <h4>CONTATTACI</h4>
+            <p>Telefono<br>0424 411535</p>
+            <p>Email<br>pizzeriatrattoria.alponte@gmail.com</p>
+        </div>
         
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="message">Messaggio:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
-        
-        <input type="hidden" name="_subject" value="Nuovo messaggio dal sito!">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="submit" value="Invia">
-    </form>
-</div>
-
-<div class="gallery-section" id="gallery">
-    <div class="gallery-item gallery-item-left">
-        <img src="immagini/alponte_2812-62.jpg" alt="Gallery Image 1" class="gallery-image">
-        <div class="gallery-text-left">
-            <h3>Lorem ipsum</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        <!-- Indirizzo -->
+        <div class="footer-section">
+            <h4>DOVE CI TROVI</h4>
+            <p>Via Braglio, 83</p>
+            <p>36064 Colceresa VI</p>
         </div>
-    </div>
 
-    <div class="gallery-item gallery-item-right">
-        <div class="gallery-text-right">
-            <h3>Lorem ipsum</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        <!-- Orari di apertura -->
+        <div class="footer-section">
+            <h4>ORARI</h4>
+            <p>Lunedì: Chiuso</p>
+            <p>Martedì: 9:30 - 14:30</p>
+            <p>Mercoledì - Domenica:</p>
+            <p>9:30 - 14:30 / 17:30 - 23:00</p>
         </div>
-        <img src="immagini/alponte_2812-36.jpg" alt="Gallery Image 2" class="gallery-image">
-    </div>
 
-    <div class="gallery-item gallery-item-left">
-        <img src="immagini/alponte_2812-46.jpg" alt="Gallery Image 3" class="gallery-image">
-        <div class="gallery-text-left">
-            <h3>Lorem ipsum</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+        <!-- Social media -->
+        <div class="footer-section">
+            <h4>SEGUICI</h4>
+            <div class="social-icons">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=100063767674334" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/pizzeria_al.ponte/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <div class="gallery-item gallery-item-right">
-        <div class="gallery-text-right">
-            <h3>Lorem ipsum</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-        </div>
-        <img src="immagini/alponte_2812-09.jpg" alt="Gallery Image 4" class="gallery-image">
-    </div>
+    <!-- Leaflet JS per la mappa interattiva -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- JavaScript -->
+    <script src="config.js"></script>
 </body>
-
-<footer>
-    <p>CONTATTACI!
-        <br>Telefono: 0424 411535
-        <br>Email: pizzeriaalponte@gmail.com 
-    </p>
-
-    <p>DOVE CI TROVI?
-        <br>Via Braglio, 83, 36064 Colceresa VI
-    </p>
-
-    <p>QUANDO SIAMO APERTI?
-        <br>Lunedì: Chiuso
-        <br>Martedì: 9:30 - 14:30
-        <br>Mercoledì - Domenica: 
-        <br>9:30 -  14:30 / 17:30 - 23:00
-      
-
-    <p>Seguici sui nostri profili social!
-        <br><a href="https://www.facebook.com/profile.php?id=100063767674334"><img src="immagini/logo facebook .png" alt="Facebook" style="height: 50px;"></a>
-        <a href="https://www.instagram.com/pizzeria_al.ponte/"><img src="immagini/logo instagram.png" alt="Instagram" style="height: 50px;"></a>
-    </p>
-</footer>
-
-<script src="config.js"></script>
 </html>
