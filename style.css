@@ -2,19 +2,16 @@
    RESET E CONFIGURAZIONE BASE
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* Reset box-sizing per tutti gli elementi */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* Configurazione HTML per scroll snap */
 html {
     scroll-snap-type: y mandatory;
     margin: 0;
     padding: 0;
 }
 
-/* Body - Impostazioni globali */
 body {
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
@@ -23,7 +20,7 @@ body {
     background-color: #f4f1de;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Previene scroll orizzontale */
+    overflow-x: hidden;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -39,7 +36,6 @@ body {
     scroll-snap-align: start;
 }
 
-/* Barra di navigazione */
 .nav {
     display: flex;
     justify-content: center;
@@ -48,7 +44,6 @@ body {
     padding: 20px 30px;
 }
 
-/* Link di navigazione */
 header a {
     white-space: nowrap;
     text-decoration: none;
@@ -73,7 +68,6 @@ header a:hover {
     transition: all 0.3s ease;
 }
 
-/* Container dropdown */
 .dropdown {
     position: absolute;
     top: calc(100% + 15px);
@@ -92,7 +86,6 @@ header a:hover {
     border-top: 3px solid #f4f1de;
 }
 
-/* Animazione apertura dropdown */
 @keyframes dropdownSlideIn {
     from {
         opacity: 0;
@@ -104,13 +97,11 @@ header a:hover {
     }
 }
 
-/* Dropdown attivo */
 .menu-item.active .dropdown {
     display: flex;
     animation: dropdownSlideIn 0.3s ease forwards;
 }
 
-/* Link all'interno del dropdown */
 .dropdown a {
     padding: 16px 24px;
     text-decoration: none;
@@ -122,7 +113,6 @@ header a:hover {
     background: #ffffff;
 }
 
-/* Effetto hover background */
 .dropdown a::before {
     content: '';
     position: absolute;
@@ -170,7 +160,6 @@ header a:hover {
     flex-shrink: 0;
 }
 
-/* Pulsanti navigazione slider */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -196,16 +185,11 @@ header a:hover {
     transform: translateY(-50%) scale(1.1);
 }
 
-.prev-btn {
-    left: 15px;
-}
-
-.next-btn {
-    right: 15px;
-}
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   FEATURED SECTION - Sezione in evidenza con immagine e testo
+   FEATURED SECTION
    ═══════════════════════════════════════════════════════════════════════ */
 
 .featured-section {
@@ -271,7 +255,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   PULSANTI MENU - Stile condiviso per i pulsanti delle sezioni menu
+   PULSANTI MENU
    ═══════════════════════════════════════════════════════════════════════ */
 
 .menu-buttons-row {
@@ -283,7 +267,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   MENU RISTORANTE - Sezione menu cucina italiana
+   MENU RISTORANTE
    ═══════════════════════════════════════════════════════════════════════ */
 
 .restaurant-menu-section {
@@ -298,12 +282,6 @@ header a:hover {
     box-sizing: border-box;
     scroll-snap-align: start;
     margin: 0;
-}
-
-.restaurant-menu-section h2 {
-    font-size: 32px;
-    color: #ffffff;
-    margin-bottom: 20px;
 }
 
 .restaurant-menu-section .menu-restaurant-button {
@@ -325,7 +303,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   MENU PIZZERIA - Sezione menu pizze
+   MENU PIZZERIA
    ═══════════════════════════════════════════════════════════════════════ */
 
 .pizza-menu-section {
@@ -340,12 +318,6 @@ header a:hover {
     box-sizing: border-box;
     scroll-snap-align: start;
     margin: 0;
-}
-
-.pizza-menu-section h2 {
-    font-size: 32px;
-    color: #ffffff;
-    margin-bottom: 20px;
 }
 
 .pizza-menu-section .menu-pizza-button {
@@ -367,7 +339,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   SEZIONE VINI - Carta dei vini e bevande
+   SEZIONE VINI
    ═══════════════════════════════════════════════════════════════════════ */
 
 .wines-section {
@@ -419,7 +391,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   GRIGLIA MOSAICO - Layout immagini per menu ristorante e pizzeria
+   GRIGLIA MOSAICO
    ═══════════════════════════════════════════════════════════════════════ */
 
 .menu-mosaic-grid {
@@ -447,7 +419,6 @@ header a:hover {
     z-index: 5;
 }
 
-/* Dimensioni diverse per effetto mosaico */
 .mosaic-large {
     grid-column: span 2;
     grid-row: span 2;
@@ -469,7 +440,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   GALLERY SECTION - Timeline storia della pizzeria
+   GALLERY SECTION
    ═══════════════════════════════════════════════════════════════════════ */
 
 .gallery-section {
@@ -487,7 +458,6 @@ header a:hover {
     margin: 0;
 }
 
-/* Item singolo della gallery */
 .gallery-item {
     display: flex;
     align-items: center;
@@ -496,13 +466,8 @@ header a:hover {
     width: 100%;
 }
 
-.gallery-item-left {
-    flex-direction: row;
-}
-
-.gallery-item-right {
-    flex-direction: row;
-}
+.gallery-item-left { flex-direction: row; }
+.gallery-item-right { flex-direction: row; }
 
 .gallery-image {
     width: 40%;
@@ -511,7 +476,6 @@ header a:hover {
     border-radius: 10px;
 }
 
-/* Testi della gallery */
 .gallery-text-right h3 {
     font-size: 24px;
     color: #083752;
@@ -532,7 +496,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   SEZIONE CONTATTI - Form per contattare il ristorante
+   SEZIONE CONTATTI
    ═══════════════════════════════════════════════════════════════════════ */
 
 .contact-section {
@@ -562,7 +526,6 @@ header a:hover {
     margin-bottom: 30px;
 }
 
-/* Form di contatto */
 .contact-section form {
     display: flex;
     flex-direction: column;
@@ -708,7 +671,7 @@ header a:hover {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   MODALE CONFERMA - Popup di conferma invio messaggio
+   MODALE CONFERMA
    ═══════════════════════════════════════════════════════════════════════ */
 
 .modal {
@@ -731,15 +694,10 @@ header a:hover {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Contenuto modale */
 .modal-content {
     background: #ffffff;
     padding: 50px 60px;
@@ -753,14 +711,8 @@ header a:hover {
 }
 
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .modal-content h3 {
@@ -776,8 +728,6 @@ header a:hover {
     margin: 0;
     line-height: 1.6;
 }
-
-/* ─── Icona checkmark animata ─── */
 
 .modal-icon {
     margin: 0 auto 25px;
@@ -816,40 +766,27 @@ header a:hover {
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
 
-@keyframes stroke {
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
-
+@keyframes stroke { 100% { stroke-dashoffset: 0; } }
 @keyframes scale {
-    0%, 100% {
-        transform: none;
-    }
-    50% {
-        transform: scale3d(1.1, 1.1, 1);
-    }
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
 }
-
-@keyframes fill {
-    100% {
-        box-shadow: inset 0px 0px 0px 30px #f0be31;
-    }
-}
+@keyframes fill { 100% { box-shadow: inset 0px 0px 0px 30px #f0be31; } }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   FOOTER - Informazioni di contatto, orari e social
+   FOOTER
    ═══════════════════════════════════════════════════════════════════════ */
 
 footer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding: 50px 40px;
     background-color: #212121;
     width: 100%;
     box-sizing: border-box;
     scroll-snap-align: start;
     margin: 0;
+    align-items: center;
 }
 
 .footer-section {
@@ -871,6 +808,22 @@ footer {
     font-size: 14px;
     line-height: 1.8;
     margin: 0;
+}
+
+/* ─── Logo footer ─── */
+
+.footer-logo-section {
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-img {
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    /* Se il logo è scuro, decommentare per renderlo bianco:
+    filter: brightness(0) invert(1); */
 }
 
 /* ─── Icone social media ─── */
@@ -911,62 +864,60 @@ footer {
    ═══════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-    /* Navigazione */
     .nav {
         gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    /* Griglia mosaico menu */
     .menu-mosaic-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 150px);
     }
-    
+
     .mosaic-large {
         grid-column: span 2;
         grid-row: span 2;
     }
-    
+
     .mosaic-wide {
         grid-column: span 2;
         grid-row: span 1;
     }
-    
+
     .mosaic-tall {
         grid-column: span 1;
         grid-row: span 2;
     }
 
-    /* Pulsanti menu */
     .menu-buttons-row {
         flex-direction: column;
         align-items: center;
     }
 
-    /* Form prenotazione */
     .form-row {
         flex-direction: column;
     }
 
-    /* Mappa e parcheggi */
     .parking-container {
         flex-direction: column;
     }
-    
+
     .parking-map {
         height: 400px;
     }
 
-    /* Footer */
     footer {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
-    
+
     .social-icons {
         justify-content: center;
+    }
+
+    .footer-logo-section {
+        align-items: center;
     }
 }
