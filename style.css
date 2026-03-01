@@ -296,12 +296,14 @@ header a:hover {
 }
 
 .restaurant-menu-section .menu-restaurant-button {
+    display: inline-block;
     font-size: 18px;
     padding: 12px 30px;
     background-color: #f1880d;
     border: none;
     cursor: pointer;
     font-weight: bold;
+    text-decoration: none;
     border-radius: 10px;
     transition: background-color 0.3s;
     color: #ffffff;
@@ -310,6 +312,7 @@ header a:hover {
 }
 
 .restaurant-menu-section .menu-restaurant-button:hover {
+    display: inline-block;
     background-color: #d47305;
 }
 
@@ -332,12 +335,14 @@ header a:hover {
 }
 
 .pizza-menu-section .menu-pizza-button {
+    display: inline-block;
     font-size: 18px;
     padding: 12px 30px;
     background-color: #fbc655;
     border: none;
     cursor: pointer;
     font-weight: bold;
+    text-decoration: none;
     border-radius: 10px;
     transition: background-color 0.3s;
     color: white;
@@ -346,6 +351,7 @@ header a:hover {
 }
 
 .pizza-menu-section .menu-pizza-button:hover {
+    display: inline-block;
     background-color: #ebb849;
 }
 
@@ -383,6 +389,7 @@ header a:hover {
 }
 
 .wines-button {
+    display: inline-block;
     font-size: 18px;
     text-decoration: none;
     padding: 12px 30px;
@@ -398,6 +405,7 @@ header a:hover {
 }
 
 .wines-button:hover {
+    display: inline-block;
     background-color: #1a4d7a;
 }
 
