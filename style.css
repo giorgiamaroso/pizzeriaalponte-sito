@@ -36,7 +36,7 @@ body {
     scroll-snap-align: start;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     position: relative;
-    z-index: 10; 
+    z-index: 300; 
 }
 
 .nav {
@@ -61,80 +61,89 @@ header a:hover {
 
 /* ─── Menu dropdown ─── */
 
-.menu-item {
-    position: relative;
-}
+/* ─── Mega menu ─── */
 
-.menu-item > a {
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-}
+.menu-item { position: relative; }
+.menu-item > a { cursor: pointer; transition: all 0.3s ease; }
+.menu-item > a.active { color: #da2c2d; }
 
-.dropdown {
+.mega-menu {
     position: absolute;
-    top: calc(100% + 15px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background-color: #f4f1de;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px 60px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.mega-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.mega-menu-panel {
     display: none;
     flex-direction: column;
-    min-width: 180px;
-    border-radius: 0;
-    z-index: 100;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    opacity: 0;
-    animation: none;
-    border-top: 3px solid #f4f1de;
+    gap: 20px;
 }
 
-@keyframes dropdownSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
+.mega-menu-panel.active { display: flex; }
 
-.menu-item.active .dropdown {
-    display: flex;
-    animation: dropdownSlideIn 0.3s ease forwards;
-}
-
-.dropdown a {
-    padding: 16px 24px;
-    text-decoration: none;
+.mega-menu-panel a {
+    font-size: 22px;
+    font-weight: bold;
     color: #083752;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
-    font-size: 15px;
-    background: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
 }
 
-.dropdown a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0;
-    background: #f4f1de;
-    transition: width 0.3s ease;
-    z-index: -1;
-}
-
-.dropdown a:hover::before {
-    width: 100%;
-}
-
-.dropdown a:hover {
+.mega-menu-panel a:hover {
     color: #da2c2d;
-    font-weight: 600;
+    transform: translateX(6px);
+}
+
+.mega-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #083752;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s ease;
+}
+
+.mega-menu-close:hover { color: #da2c2d; }
+
+.mega-menu-overlay {
+    position: fixed;
+    inset: 0;
+    top: 65px; /* altezza dell'header */
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.mega-menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -297,6 +306,12 @@ header a:hover {
     margin: 0;
 }
 
+.restaurant-menu-section h2 {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
 .restaurant-menu-section .menu-restaurant-button {
     display: inline-block;
     font-size: 18px;
@@ -336,6 +351,12 @@ header a:hover {
     box-sizing: border-box;
     scroll-snap-align: start;
     margin: 0;
+}
+
+.pizza-menu-section h2 {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 16px;
 }
 
 .pizza-menu-section .menu-pizza-button {
@@ -613,7 +634,9 @@ header a:hover {
 }
 
 .contact-section input[type="submit"]:hover {
-    background-color: #9f2f2c;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    z-index: 5;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════

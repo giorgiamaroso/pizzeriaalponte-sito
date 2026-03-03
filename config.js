@@ -2,29 +2,53 @@
    MENU DROPDOWN - Gestione apertura/chiusura menu a tendina
    ═══════════════════════════════════════════════════════════════════════ */
 
+const megaMenu = document.getElementById('megaMenu');
+const megaMenuOverlay = document.getElementById('megaMenuOverlay');
+const megaMenuClose = document.getElementById('megaMenuClose');
+
+function openMegaMenu(panelId) {
+    document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.menu-item > a').forEach(a => a.classList.remove('active'));
+    document.querySelector(`.mega-menu-panel[data-panel="${panelId}"]`).classList.add('active');
+    document.querySelector(`.menu-item > a[data-menu="${panelId}"]`).classList.add('active');
+    megaMenu.classList.add('open');
+    megaMenuOverlay.classList.add('active');
+}
+
+function closeMegaMenu() {
+    megaMenu.classList.remove('open');
+    megaMenuOverlay.classList.remove('active');
+    document.querySelectorAll('.menu-item > a').forEach(a => a.classList.remove('active'));
+    setTimeout(() => {
+        document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('active'));
+    }, 350);
+}
+
 document.querySelectorAll('.menu-item > a').forEach(link => {
-    link.addEventListener('click', function (e) {
+    link.addEventListener('click', function(e) {
         e.preventDefault();
-        const menuItem = this.parentElement;
-        
-        document.querySelectorAll('.menu-item').forEach(item => {
-            if (item !== menuItem) {
-                item.classList.remove('active');
-            }
-        });
-        
-        menuItem.classList.toggle('active');
+        const panelId = this.getAttribute('data-menu');
+        if (megaMenu.classList.contains('open') && this.classList.contains('active')) {
+            closeMegaMenu();
+        } else {
+            openMegaMenu(panelId);
+        }
     });
 });
 
-document.addEventListener('click', function (e) {
-    if (!e.target.closest('.menu-item')) {
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.classList.remove('active');
-        });
-    }
+megaMenuClose.addEventListener('click', closeMegaMenu);
+megaMenuOverlay.addEventListener('click', closeMegaMenu);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMegaMenu(); });
+document.querySelectorAll('.mega-menu-panel a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        closeMegaMenu();
+        setTimeout(() => {
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
 });
-
 /* Slider rimosso - sostituito con marquee gallery CSS puro */
 
 /* ═══════════════════════════════════════════════════════════════════════

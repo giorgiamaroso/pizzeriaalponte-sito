@@ -21,44 +21,42 @@
     <!-- HEADER - Navigazione principale con menu dropdown -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <header class="site-header">
-        <nav class="nav">
-            <!-- Menu Home -->
-            <div class="menu-item">
-                <a href="#">HOME</a>
-                <div class="dropdown">
-                    <a href="#intro">Introduzione</a>
-                    <a href="#news">Novità</a>
-                </div>
-            </div>
+    <nav class="nav">
+        <div class="menu-item">
+            <a href="#" data-menu="home">HOME</a>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-menu="chi-siamo">CHI SIAMO</a>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-menu="cucina">TRATTORIA</a>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-menu="pizze">PIZZERIA</a>
+        </div>
+    </nav>
 
-            <!-- Menu Chi Siamo -->
-            <div class="menu-item">
-                <a href="#">CHI SIAMO</a>
-                <div class="dropdown">
-                    <a href="#gallery">La nostra storia</a>
-                    <a href="#staff">Lo staff</a>
-                </div>
-            </div>
+    <div class="mega-menu" id="megaMenu">
+        <button class="mega-menu-close" id="megaMenuClose">✕</button>
+        <div class="mega-menu-panel" data-panel="home">
+            <a href="#intro">Introduzione</a>
+            <a href="#news">Novità</a>
+        </div>
+        <div class="mega-menu-panel" data-panel="chi-siamo">
+            <a href="#gallery">La nostra storia</a>
+        </div>
+        <div class="mega-menu-panel" data-panel="cucina">
+            <a href="#menu-ristorante">Menu</a>
+            <a href="#menu-vini">Carta dei Vini</a>
+        </div>
+        <div class="mega-menu-panel" data-panel="pizze">
+            <a href="#menu-pizzeria">Classiche</a>
+            <a href="#stagionali">Stagionali</a>
+        </div>
+    </div>
+</header>
 
-            <!-- Menu Cucina -->
-            <div class="menu-item">
-                <a href="#">CUCINA</a>
-                <div class="dropdown">
-                    <a href="#menu-ristorante">Menu</a>
-                    <a href="#menu-vini">Carta dei Vini</a>
-                </div>
-            </div>
-
-            <!-- Menu Pizze -->
-            <div class="menu-item">
-                <a href="#">PIZZE</a>
-                <div class="dropdown">
-                    <a href="#menu-pizzeria">Classiche</a>
-                    <a href="#stagionali">Stagionali</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+<div class="mega-menu-overlay" id="megaMenuOverlay"></div>
 
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <!-- MARQUEE GALLERY - Due righe di foto in scorrimento automatico -->
@@ -144,6 +142,7 @@
     <!-- MENU RISTORANTE - Sezione menu cucina italiana con griglia mosaico -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <div id="menu-ristorante" class="restaurant-menu-section">
+        <h2>Trattoria</h2>
         <div class="menu-buttons-row">
             <a href="menù/menu cucina.pdf" target="_blank" class="menu-restaurant-button">MENÙ ITALIANO</a>
             <a href="menù/menu cucina.pdf" target="_blank" class="menu-restaurant-button">ENGLISH MENU</a>
@@ -161,6 +160,7 @@
     <!-- MENU PIZZERIA - Sezione menu pizze con griglia mosaico -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <div id="menu-pizzeria" class="pizza-menu-section">
+        <h2>Pizzeria</h2>
         <div class="menu-buttons-row">
             <a href="menù/menù pizzeria.pdf" target="_blank" class="menu-pizza-button">MENÙ ITALIANO</a>
             <a href="menù/menù pizzeria.pdf" target="_blank" class="menu-pizza-button">ENIGLISH MENU</a>
