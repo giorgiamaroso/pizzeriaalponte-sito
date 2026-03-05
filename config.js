@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   MENU DROPDOWN - Gestione apertura/chiusura menu a tendina
+   MEGA MENU - Gestione apertura/chiusura menu full-width
    ═══════════════════════════════════════════════════════════════════════ */
 
 const megaMenu = document.getElementById('megaMenu');
@@ -28,6 +28,14 @@ document.querySelectorAll('.menu-item > a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const panelId = this.getAttribute('data-menu');
+
+        // HOME: torna in cima senza aprire il menu
+        if (panelId === 'home') {
+            closeMegaMenu();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
         if (megaMenu.classList.contains('open') && this.classList.contains('active')) {
             closeMegaMenu();
         } else {
@@ -39,6 +47,7 @@ document.querySelectorAll('.menu-item > a').forEach(link => {
 megaMenuClose.addEventListener('click', closeMegaMenu);
 megaMenuOverlay.addEventListener('click', closeMegaMenu);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMegaMenu(); });
+
 document.querySelectorAll('.mega-menu-panel a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -49,7 +58,27 @@ document.querySelectorAll('.mega-menu-panel a').forEach(link => {
         }, 400);
     });
 });
-/* Slider rimosso - sostituito con marquee gallery CSS puro */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOTTONE TORNA SU
+   ═══════════════════════════════════════════════════════════════════════ */
+
+const backToTop = document.createElement('button');
+backToTop.textContent = '↑ Torna su';
+backToTop.id = 'backToTop';
+document.body.appendChild(backToTop);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 /* ═══════════════════════════════════════════════════════════════════════
    MODALE - Gestione popup di conferma
@@ -57,7 +86,6 @@ document.querySelectorAll('.mega-menu-panel a').forEach(link => {
 
 function closeModal(modal) {
     modal.classList.add('closing');
-    
     setTimeout(() => {
         modal.classList.remove('show');
         modal.classList.remove('closing');
@@ -71,12 +99,12 @@ function closeModal(modal) {
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const modal = document.getElementById('thankYouModal');
     modal.classList.add('show');
-    
+
     const formData = new FormData(this);
-    
+
     fetch('https://formsubmit.co/pizzeriatrattoria.alponte@gmail.com', {
         method: 'POST',
         body: formData
@@ -104,15 +132,13 @@ const today = new Date().toISOString().split('T')[0];
 dateInput.setAttribute('min', today);
 
 /* ═══════════════════════════════════════════════════════════════════════
-   MAPPA INTERATTIVA CON LEAFLET + STADIA MAPS (stile pulito e moderno)
+   MAPPA INTERATTIVA CON LEAFLET + STADIA MAPS
    ═══════════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Coordinate del ristorante (Via Braglio, 83, Colceresa VI)
     const restaurantLat = 45.721079;
     const restaurantLng = 11.609528;
 
-    // Inizializza la mappa centrata sul ristorante
     const map = L.map('map', {
         center: [restaurantLat, restaurantLng],
         zoom: 15,
@@ -120,13 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
         zoomControl: true
     });
 
-    // Tile layer Stadia Maps - Alidade Smooth (cartografico, pulito, poco rumore visivo)
     L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 20
     }).addTo(map);
 
-    // Icona personalizzata nei colori del sito
     const pizzeriaIcon = L.divIcon({
         className: '',
         html: `<div style="
@@ -143,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
         popupAnchor: [0, -38]
     });
 
-    // Marker ristorante con popup
     const marker = L.marker([restaurantLat, restaurantLng], { icon: pizzeriaIcon }).addTo(map);
     marker.bindPopup(`
         <div style="font-family: 'DM Sans', sans-serif; padding: 6px 4px; min-width: 180px;">
@@ -152,7 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     `, { offset: [0, -5] }).openPopup();
 
-    // Icona parcheggio (blu, quadrata)
     const parkingIcon = L.divIcon({
         className: '',
         html: `<div style="
@@ -175,26 +197,10 @@ document.addEventListener('DOMContentLoaded', function() {
         popupAnchor: [0, -18]
     });
 
-    // Parcheggi con coordinate reali
     const parcheggi = [
-        {
-            lat: 45.7209,
-            lng: 11.60966,
-            nome: 'Parcheggio Magazzini Da Leone',
-            desc: 'Via Braglio, 46 — di fronte al ristorante'
-        },
-        {
-            lat: 45.7186549,
-            lng: 11.6081537,
-            nome: 'Parcheggio Pubblico',
-            desc: 'Piazza del Mercato — ~300m dal ristorante'
-        },
-        {
-            lat: 45.7186948,
-            lng: 11.6074738,
-            nome: 'Area parcheggio libero',
-            desc: 'Via Roma — ~100m dal ristorante'
-        }
+        { lat: 45.7209, lng: 11.60966, nome: 'Parcheggio Magazzini Da Leone', desc: 'Via Braglio, 46 — di fronte al ristorante' },
+        { lat: 45.7186549, lng: 11.6081537, nome: 'Parcheggio Pubblico', desc: 'Piazza del Mercato — ~300m dal ristorante' },
+        { lat: 45.7186948, lng: 11.6074738, nome: 'Area parcheggio libero', desc: 'Via Roma — ~100m dal ristorante' }
     ];
 
     parcheggi.forEach(p => {
